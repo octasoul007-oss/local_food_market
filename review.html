@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Product Reviews & Inventory</title>
+    <link rel="stylesheet" href="review.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌾 FARMZONE</h1>
+            <nav>
+                <button class="nav-btn active" data-view="reviews">Reviews</button>
+                <button class="nav-btn" data-view="inventory">Inventory</button>
+                <button class="nav-btn" data-view="orders">Orders</button>
+            </nav>
+            <div class="user-info">
+                <a href="index.html">Home</a>
+                <span id="currentUser">Guest</span>
+                <button id="logoutBtn">Logout</button>
+            </div>
+        </header>
+
+        <!-- Reviews Section -->
+        <section id="reviewsView" class="view-section active">
+            <div class="section-header">
+                <h2>Product Reviews</h2>
+                <button id="addReviewBtn" class="primary-btn">Add Review</button>
+            </div>
+            
+            <div class="filters">
+                <select id="ratingFilter">
+                    <option value="">All Ratings</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <input type="text" id="reviewSearch" placeholder="Search reviews...">
+            </div>
+
+            <div id="reviewsList" class="reviews-list"></div>
+        </section>
+
+        <!-- Inventory Section -->
+        <section id="inventoryView" class="view-section">
+            <div class="section-header">
+                <h2>Inventory Tracking</h2>
+                <button id="addInventoryBtn" class="primary-btn">Add Stock</button>
+            </div>
+
+            <div class="inventory-stats">
+                <div class="stat-card">
+                    <h3>Total Products</h3>
+                    <p id="totalProducts">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Low Stock Items</h3>
+                    <p id="lowStock">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Out of Stock</h3>
+                    <p id="outOfStock">0</p>
+                </div>
+            </div>
+
+            <div id="inventoryList" class="inventory-list"></div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="ordersView" class="view-section">
+            <div class="section-header">
+                <h2>Orders Management</h2>
+            </div>
+            <div id="ordersList" class="orders-list"></div>
+        </section>
+
+        <!-- Add Review Modal -->
+        <div id="reviewModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Write a Review</h2>
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label>Order ID:</label>
+                        <input type="number" id="reviewOrderId" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Rating:</label>
+                        <div class="star-rating">
+                            <span class="star" data-rating="1">☆</span>
+                            <span class="star" data-rating="2">☆</span>
+                            <span class="star" data-rating="3">☆</span>
+                            <span class="star" data-rating="4">☆</span>
+                            <span class="star" data-rating="5">☆</span>
+                        </div>
+                        <input type="hidden" id="reviewRating" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Comment:</label>
+                        <textarea id="reviewComment" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="primary-btn">Submit Review</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Add Inventory Modal -->
+        <div id="inventoryModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Add Inventory Log</h2>
+                <form id="inventoryForm">
+                    <div class="form-group">
+                        <label>Product:</label>
+                        <select id="inventoryProduct" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Change Type:</label>
+                        <select id="inventoryChangeType" required>
+                            <option value="stock_in">Stock In</option>
+                            <option value="stock_out">Stock Out</option>
+                            <option value="adjustment">Adjustment</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity:</label>
+                        <input type="number" id="inventoryQuantity" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Notes:</label>
+                        <textarea id="inventoryNotes" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="primary-btn">Add Log</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Login Modal -->
+        <div id="loginModal" class="modal active">
+            <div class="modal-content">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Role:</label>
+                        <select id="userRole">
+                            <option value="buyer">Buyer</option>
+                            <option value="farmer">Farmer</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="primary-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="review.js"></script>
+</body>
+</html>
