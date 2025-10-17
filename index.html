@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Food Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🌾 FARM ZONE</h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home">Home</a>
+                <a href="#farmers">Farmers</a>
+                <a href="#products">Products</a>
+                <a href="#about">About</a>
+                <button id="loginBtn" class="btn btn-primary">Login</button>
+                <button id="registerBtn" class="btn btn-secondary">Register</button>
+                <div id="userInfo" class="user-info" style="display: none;">
+                    <span id="userName"></span>
+                    <button id="dashboardBtn" class="btn btn-small">Dashboard</button>
+                    <button id="logoutBtn" class="btn btn-small">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <img class="temp" src="/images/template.jpg" style="width: 1000px; height: 500px; object-fit: cover;" alt="Fresh Fruits">
+            <h2>Connect with Local Farmers</h2>
+            <p>Buy fresh, locally-grown produce directly from farmers near you</p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search for products, farmers...">
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="Vegetables">Vegetables</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Grains">Grains</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Herbs">Herbs</option>
+                </select>
+                <button id="searchBtn" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="mapSection" class="map-section">
+        <div class="container">
+            <h2>Find Farmers Near You</h2>
+            <div id="map" style="height: 500px; width: 100%;"></div>
+        </div>
+    </section>
+
+    <!-- Farmers Section -->
+    <section id="farmers" class="section">
+        <div class="container">
+            <h2>Our Farmers</h2>
+            <div id="farmersList" class="grid"></div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+        <div class="container">
+            <h2>Fresh Products</h2>
+            <div id="productsList" class="grid"></div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <select id="userType" required>
+                    <option value="">Select User Type</option>
+                    <option value="buyer">Buyer</option>
+                    <option value="farmer">Farmer</option>
+                </select>
+                <input type="text" id="regName" placeholder="Full Name" required>
+                <input type="email" id="regEmail" placeholder="Email" required>
+                <input type="password" id="regPassword" placeholder="Password" required>
+                <input type="tel" id="regPhone" placeholder="Phone Number">
+                <input type="text" id="regCity" placeholder="City" required>
+                <input type="text" id="regState" placeholder="State" required>
+                <textarea id="regAddress" placeholder="Address"></textarea>
+                
+                <div id="farmerFields" style="display: none;">
+                    <input type="text" id="farmName" placeholder="Farm Name">
+                    <input type="number" id="farmSize" placeholder="Farm Size (acres)">
+                    <textarea id="farmDescription" placeholder="Farm Description"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Section (hidden by default) -->
+    <section id="dashboard" class="section" style="display: none;">
+        <div class="container">
+            <h2>Dashboard</h2>
+            <div id="dashboardContent"></div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
